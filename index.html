@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thompson Electrical | Qualified Electrical Contractor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        :root {
+            --black: #121212;
+            --dark-gray: #1e1e1e;
+            --medium-gray: #2a2a2a;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --red: #e63946;
+            --dark-red: #c1121f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--red);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--red);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark-red);
+            z-index: -1;
+            transition: transform 0.5s ease;
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+        
+        .btn:hover:before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(230, 57, 70, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--red);
+            color: var(--red);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: var(--red);
+            color: var(--white);
+        }
+        
+        .btn-disabled {
+            background-color: var(--medium-gray);
+            color: var(--light-gray);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
+        .btn-disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+        
+        .logo-text span {
+            color: var(--red);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--red);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--red);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--black);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            animation: fadeUp 1s ease;
+        }
+        
+        .hero h1 {
+            color: var(--black);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: var(--medium-gray);
+        }
+        
+        .tagline {
+            font-style: italic;
+            color: var(--red);
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(230, 57, 70, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-icon:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+            color: rgba(230, 57, 70, 0.3);
+        }
+        
+        .floating-icon:nth-child(2) {
+            top: 60%;
+            left: 85%;
+            animation-delay: 1s;
+            color: rgba(18, 18, 18, 0.3);
+        }
+        
+        .floating-icon:nth-child(3) {
+            top: 80%;
+            left: 15%;
+            animation-delay: 2s;
+            color: rgba(230, 57, 70, 0.3);
+        }
+        
+        .floating-icon:nth-child(4) {
+            top: 30%;
+            left: 80%;
+            animation-delay: 3s;
+            color: rgba(18, 18, 18, 0.3);
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, rgba(230, 57, 70, 0.05) 0%, transparent 50%);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .about-text {
+            animation: fadeLeft 1s ease;
+        }
+        
+        .about-image {
+            height: 400px;
+            background: var(--black);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeRight 1s ease;
+        }
+        
+        .about-image:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1621905251189-08d45b3daddf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(18, 18, 18, 0.03) 0%, transparent 50%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 10px;
+            transition: all 0.4s ease;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--red);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            color: var(--red);
+        }
+        
+        .service-card h3 {
+            color: var(--black);
+            margin-bottom: 15px;
+        }
+        
+        .service-card p {
+            color: var(--medium-gray);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(230, 57, 70, 0.05) 0%, transparent 50%);
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-info {
+            animation: fadeLeft 1s ease;
+        }
+        
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(5px);
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: var(--red);
+            width: 40px;
+            text-align: center;
+        }
+        
+        .hours {
+            margin-top: 30px;
+        }
+        
+        .hours h3 {
+            margin-bottom: 15px;
+            color: var(--black);
+        }
+        
+        .hours p {
+            margin-bottom: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--black);
+            color: var(--white);
+            border-radius: 50%;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--red);
+            transform: translateY(-5px);
+        }
+        
+        .form-container {
+            animation: fadeRight 1s ease;
+        }
+        
+        .contact-form {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--black);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            background: var(--light-gray);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            color: var(--black);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--red);
+            box-shadow: 0 0 0 2px rgba(230, 57, 70, 0.2);
+            background: var(--white);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--black);
+            padding: 70px 0 30px;
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+        }
+        
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)"/></svg>');
+            opacity: 0.5;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--white);
+        }
+        
+        .footer-column h3 span {
+            color: var(--red);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--red);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                height: 90vh;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <!-- Logo Image -->
+                <div class="logo">
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="50" height="50" rx="5" fill="#121212"/>
+                        <path d="M15 15H35V35H15V15Z" fill="#e63946"/>
+                        <path d="M20 20L30 30M30 20L20 30" stroke="#ffffff" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="logo-text">THOMPSON <span>ELECTRICAL</span></div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#" class="btn-disabled">Online Store</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="floating-icons">
+            <div class="floating-icon"><i class="fas fa-bolt"></i></div>
+            <div class="floating-icon"><i class="fas fa-tools"></i></div>
+            <div class="floating-icon"><i class="fas fa-solar-panel"></i></div>
+            <div class="floating-icon"><i class="fas fa-home"></i></div>
+        </div>
+        <div class="container hero-content">
+            <h1>THOMPSON ELECTRICAL</h1>
+            <p>Qualified and Registered Electrical Contractor at the Department of Labour & National Bargaining Council.</p>
+            <p>Call us today for all your electrical and air conditioning needs.</p>
+            <p class="tagline">Your family and property safety is our priority</p>
+            <a href="#contact" class="btn">Contact Us Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Thompson Electrical is a qualified and registered electrical contractor serving Bothaville and surrounding areas. We are registered with the Department of Labour and National Bargaining Council, ensuring all our work meets the highest standards of safety and quality.</p>
+                    <p>With years of experience in the electrical industry, we specialize in both residential and commercial electrical services, from new installations to maintenance and repairs.</p>
+                    <p>We ensure safe and quality work as your family and property safety is our priority. Our team of skilled electricians is committed to delivering exceptional service with attention to detail and customer satisfaction.</p>
+                    <a href="#contact" class="btn btn-outline">Get a Quote</a>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Electrical Components</h3>
+                    <p>Wires & Cables, Conduit Pipes and accessories, Circuit breakers, Cable Management, Boxes & Enclosures, Switch Gears</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <h3>Loadshedding Solutions</h3>
+                    <p>Complete loadshedding solutions including inverter systems, battery backups, and solar power options for uninterrupted power supply.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Lighting Solutions</h3>
+                    <p>Electrical & Solar lighting installations for indoor and outdoor spaces, including energy-efficient LED solutions.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Electrical Maintenance</h3>
+                    <p>Domestic, Commercial, and Agricultural electrical maintenance services to keep your systems running smoothly.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Gate Motor Services</h3>
+                    <p>Gate Motor Installations, Repairs, and Accessories for secure and convenient property access.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-certificate"></i>
+                    </div>
+                    <h3>Certification & Compliance</h3>
+                    <p>COC's - Certificate of Compliance for electrical installations to ensure safety and regulatory compliance.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Water Pump Solutions</h3>
+                    <p>Solar Borehole Pumps and standard Borehole pumps installation and maintenance for reliable water supply.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>New Installations</h3>
+                    <p>Complete new electrical installations for residential, commercial, and agricultural properties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p>Ready to solve your electrical challenges? Get in touch with our expert team for fast, reliable service.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>88 President Street, Bothaville, South Africa</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <p>Office: 073 647 8733<br>Jean: 076 432 2552</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>orders@thompsonelectrical.co.za</p>
+                        </div>
+                    </div>
+                    <div class="hours">
+                        <h3>Service Areas</h3>
+                        <p>Bothaville and surrounding areas</p>
+                        <p>Commercial, Residential & Agricultural</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="form-container">
+                    <div class="contact-form">
+                        <h3>Send an Enquiry</h3>
+                        <form id="enquiryForm">
+                            <div class="form-group">
+                                <label for="enquiry-name">Your Name</label>
+                                <input type="text" id="enquiry-name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="enquiry-phone">Phone Number</label>
+                                <input type="tel" id="enquiry-phone" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="enquiry-email">Email Address</label>
+                                <input type="email" id="enquiry-email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="enquiry-service">Service Needed</label>
+                                <select id="enquiry-service" class="form-control" required>
+                                    <option value="">Select a service</option>
+                                    <option value="electrical-components">Electrical Components</option>
+                                    <option value="loadshedding-solutions">Loadshedding Solutions</option>
+                                    <option value="lighting">Lighting Solutions</option>
+                                    <option value="maintenance">Electrical Maintenance</option>
+                                    <option value="gate-motors">Gate Motor Services</option>
+                                    <option value="compliance">Certification & Compliance</option>
+                                    <option value="water-pumps">Water Pump Solutions</option>
+                                    <option value="new-installations">New Installations</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="enquiry-message">Your Message</label>
+                                <textarea id="enquiry-message" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Enquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>THOMPSON <span>ELECTRICAL</span></h3>
+                    <p>Qualified and Registered Electrical Contractor serving Bothaville and surrounding areas with excellence and safety as our priority.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li>Electrical Components</li>
+                        <li>Loadshedding Solutions</li>
+                        <li>Lighting Solutions</li>
+                        <li>Electrical Maintenance</li>
+                        <li>Gate Motor Services</li>
+                        <li>Certification & Compliance</li>
+                        <li>Water Pump Solutions</li>
+                        <li>New Installations</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 88 President Street, Bothaville</li>
+                        <li><i class="fas fa-phone-alt"></i> Office: 073 647 8733</li>
+                        <li><i class="fas fa-phone-alt"></i> Jean: 076 432 2552</li>
+                        <li><i class="fas fa-envelope"></i> orders@thompsonelectrical.co.za</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Thompson Electrical. All Rights Reserved. | Qualified and Registered Electrical Contractor</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '15px 0';
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '20px 0';
+                header.style.boxShadow = 'none';
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Contact form submission
+        const enquiryForm = document.getElementById('enquiryForm');
+        enquiryForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('enquiry-name').value;
+            const phone = document.getElementById('enquiry-phone').value;
+            const service = document.getElementById('enquiry-service').value;
+            
+            // In a real implementation, you would send this data to a server
+            // For this example, we'll just show an alert
+            alert(`Thank you for your enquiry, ${name}! We'll contact you at ${phone} soon about your ${service} needs.`);
+            
+            // Reset form
+            enquiryForm.reset();
+        });
+
+        // Add floating animation to service cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeUp 0.8s ease forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
